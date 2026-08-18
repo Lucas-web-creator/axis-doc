@@ -1,0 +1,2220 @@
+/* =========================================================
+   AXIS DOC — EDITION
+   Folha de estilos do editor de documentos
+========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS
+========================================================= */
+
+:root {
+
+    /* -----------------------------------------------------
+       CORES PRINCIPAIS
+    ------------------------------------------------------ */
+
+    --axis-blue-900: #073b75;
+    --axis-blue-800: #084c9e;
+    --axis-blue-700: #0b5fc4;
+    --axis-blue-600: #1677d2;
+    --axis-blue-500: #2b86d9;
+    --axis-blue-100: #eaf3ff;
+    --axis-blue-50: #f4f8ff;
+
+
+    /* -----------------------------------------------------
+       CORES NEUTRAS
+    ------------------------------------------------------ */
+
+    --white: #ffffff;
+
+    --gray-50: #f8f9fb;
+    --gray-100: #f1f3f6;
+    --gray-150: #e9ecf1;
+    --gray-200: #dfe3e9;
+    --gray-300: #c8ced7;
+    --gray-400: #9aa3af;
+    --gray-500: #707985;
+    --gray-600: #535c68;
+    --gray-700: #343b45;
+    --gray-800: #242a32;
+    --gray-900: #171b21;
+
+
+    /* -----------------------------------------------------
+       CORES DE ESTADO
+    ------------------------------------------------------ */
+
+    --success: #168447;
+    --warning: #b77900;
+    --danger: #c53535;
+
+
+    /* -----------------------------------------------------
+       SOMBRAS
+    ------------------------------------------------------ */
+
+    --shadow-xs:
+        0 1px 2px rgba(20, 35, 55, 0.06);
+
+    --shadow-sm:
+        0 2px 7px rgba(20, 35, 55, 0.08);
+
+    --shadow-md:
+        0 6px 18px rgba(20, 35, 55, 0.10);
+
+    --shadow-lg:
+        0 14px 36px rgba(20, 35, 55, 0.14);
+
+    --shadow-page:
+        0 3px 12px rgba(30, 45, 65, 0.16);
+
+
+    /* -----------------------------------------------------
+       BORDAS
+    ------------------------------------------------------ */
+
+    --border-color: #dce1e8;
+
+    --border-blue:
+        rgba(11, 95, 196, 0.25);
+
+
+    /* -----------------------------------------------------
+       DIMENSÕES
+    ------------------------------------------------------ */
+
+    --header-height: 64px;
+
+    --toolbar-height: 52px;
+
+    --view-toolbar-height: 42px;
+
+    --footer-height: 38px;
+
+    --page-width: 794px;
+
+    --page-min-height: 1123px;
+
+
+    /* -----------------------------------------------------
+       RADIUS
+    ------------------------------------------------------ */
+
+    --radius-xs: 4px;
+
+    --radius-sm: 6px;
+
+    --radius-md: 9px;
+
+    --radius-lg: 12px;
+
+
+    /* -----------------------------------------------------
+       TRANSIÇÕES
+    ------------------------------------------------------ */
+
+    --transition-fast:
+        120ms ease;
+
+    --transition:
+        180ms ease;
+
+    --transition-smooth:
+        240ms ease;
+
+}
+
+
+/* =========================================================
+   2. RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html {
+
+    height: 100%;
+
+    font-size: 16px;
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100%;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--gray-800);
+
+    background:
+        var(--gray-100);
+
+    overflow: hidden;
+
+}
+
+
+button,
+input,
+select,
+textarea {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    border: 0;
+
+}
+
+
+button,
+select {
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+ul,
+ol {
+
+    list-style: none;
+
+}
+
+
+/* =========================================================
+   3. ACESSIBILIDADE
+========================================================= */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+
+    outline: 3px solid
+        rgba(22, 119, 210, 0.35);
+
+    outline-offset: 2px;
+
+}
+
+
+/* =========================================================
+   4. CABEÇALHO
+========================================================= */
+
+.editor-header {
+
+    position: relative;
+
+    z-index: 50;
+
+    height: var(--header-height);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    padding: 0 22px;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--axis-blue-900),
+            var(--axis-blue-700)
+        );
+
+    box-shadow:
+        0 2px 8px rgba(7, 59, 117, 0.22);
+
+}
+
+
+/* =========================================================
+   5. MARCA
+========================================================= */
+
+.editor-brand {
+
+    flex-shrink: 0;
+
+}
+
+
+.editor-brand-link {
+
+    display: inline-flex;
+
+    align-items: baseline;
+
+    gap: 4px;
+
+    color: var(--white);
+
+    transition:
+        opacity var(--transition);
+
+}
+
+
+.editor-brand-link:hover {
+
+    opacity: 0.88;
+
+}
+
+
+.brand-name {
+
+    font-size: 1.35rem;
+
+    font-weight: 750;
+
+    letter-spacing: -0.04em;
+
+}
+
+
+.brand-product {
+
+    font-size: 1.05rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+
+    opacity: 0.92;
+
+}
+
+
+/* =========================================================
+   6. INFORMAÇÕES DO DOCUMENTO
+========================================================= */
+
+.document-header-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.document-title {
+
+    width: min(420px, 100%);
+
+    min-width: 120px;
+
+    padding: 8px 11px;
+
+    color: var(--white);
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    font-size: 0.95rem;
+
+    font-weight: 500;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition);
+
+}
+
+
+.document-title:hover {
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+}
+
+
+.document-title:focus {
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    border-color:
+        rgba(255, 255, 255, 0.55);
+
+}
+
+
+.document-status {
+
+    flex-shrink: 0;
+
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size: 0.78rem;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   7. AÇÕES DO CABEÇALHO
+========================================================= */
+
+.editor-header-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+}
+
+
+.editor-header-button {
+
+    min-height: 36px;
+
+    padding: 0 13px;
+
+    color: var(--white);
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.17);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        border-color var(--transition);
+
+}
+
+
+.editor-header-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    border-color:
+        rgba(255, 255, 255, 0.30);
+
+}
+
+
+.editor-header-button:active {
+
+    transform: translateY(1px);
+
+}
+
+
+#saveDocumentButton {
+
+    background: var(--white);
+
+    color: var(--axis-blue-800);
+
+    border-color: var(--white);
+
+}
+
+
+#saveDocumentButton:hover {
+
+    background: var(--axis-blue-50);
+
+}
+
+
+/* =========================================================
+   8. BARRA DE FERRAMENTAS
+========================================================= */
+
+.editor-toolbar {
+
+    position: relative;
+
+    z-index: 40;
+
+    min-height: var(--toolbar-height);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 14px;
+
+    background: var(--white);
+
+    border-bottom: 1px solid var(--border-color);
+
+    box-shadow:
+        var(--shadow-xs);
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+
+}
+
+
+/* =========================================================
+   9. GRUPOS DA TOOLBAR
+========================================================= */
+
+.toolbar-group {
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+}
+
+
+/* =========================================================
+   10. DIVISORES
+========================================================= */
+
+.toolbar-divider {
+
+    width: 1px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    margin: 0 4px;
+
+    background:
+        var(--gray-200);
+
+}
+
+
+/* =========================================================
+   11. BOTÕES DA TOOLBAR
+========================================================= */
+
+.toolbar-button {
+
+    min-height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 0 9px;
+
+    color: var(--gray-700);
+
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+
+}
+
+
+.toolbar-button:hover {
+
+    color: var(--axis-blue-800);
+
+    background:
+        var(--axis-blue-50);
+
+    border-color:
+        var(--border-blue);
+
+}
+
+
+.toolbar-button:active {
+
+    background:
+        var(--axis-blue-100);
+
+}
+
+
+.toolbar-button.active {
+
+    color: var(--axis-blue-800);
+
+    background:
+        var(--axis-blue-100);
+
+    border-color:
+        rgba(11, 95, 196, 0.20);
+
+}
+
+
+/* =========================================================
+   12. BOTÕES DE FORMATAÇÃO
+========================================================= */
+
+.toolbar-format-button {
+
+    width: 34px;
+
+    padding: 0;
+
+    font-size: 0.95rem;
+
+}
+
+
+#boldButton {
+
+    font-weight: 800;
+
+}
+
+
+#italicButton {
+
+    font-style: italic;
+
+}
+
+
+#underlineButton {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   13. LABELS
+========================================================= */
+
+.toolbar-label {
+
+    color: var(--gray-500);
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   14. SELECTS
+========================================================= */
+
+.toolbar-select {
+
+    min-height: 34px;
+
+    padding: 0 28px 0 9px;
+
+    color: var(--gray-700);
+
+    background: var(--white);
+
+    border: 1px solid var(--gray-200);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    font-size: 0.78rem;
+
+    font-weight: 500;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+
+}
+
+
+.toolbar-select:hover {
+
+    border-color:
+        var(--gray-300);
+
+}
+
+
+.toolbar-select:focus {
+
+    border-color:
+        var(--axis-blue-500);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(43, 134, 217, 0.10);
+
+}
+
+
+.font-size-select {
+
+    width: 64px;
+
+}
+
+
+/* =========================================================
+   15. INPUTS DE COR
+========================================================= */
+
+.toolbar-color {
+
+    width: 34px;
+
+    height: 34px;
+
+    padding: 3px;
+
+    background: var(--white);
+
+    border: 1px solid var(--gray-200);
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+}
+
+
+.toolbar-color:hover {
+
+    border-color:
+        var(--axis-blue-500);
+
+}
+
+
+/* =========================================================
+   16. BARRA DE VISUALIZAÇÃO
+========================================================= */
+
+.document-view-toolbar {
+
+    min-height: var(--view-toolbar-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 4px 18px;
+
+    background:
+        var(--gray-50);
+
+    border-bottom:
+        1px solid var(--border-color);
+
+}
+
+
+.view-toolbar-group {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.view-toolbar-label {
+
+    margin-right: 4px;
+
+    color: var(--gray-500);
+
+    font-size: 0.74rem;
+
+    font-weight: 600;
+
+}
+
+
+.view-toolbar-button {
+
+    min-height: 28px;
+
+    padding: 0 9px;
+
+    color: var(--gray-600);
+
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-xs);
+
+    font-size: 0.74rem;
+
+    font-weight: 500;
+
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+
+}
+
+
+.view-toolbar-button:hover {
+
+    color: var(--axis-blue-800);
+
+    background: var(--white);
+
+    border-color:
+        var(--gray-200);
+
+}
+
+
+.zoom-value {
+
+    min-width: 45px;
+
+    text-align: center;
+
+    color: var(--gray-700);
+
+    font-size: 0.76rem;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   17. ÁREA DE TRABALHO
+========================================================= */
+
+.editor-workspace {
+
+    position: relative;
+
+    flex: 1;
+
+    height:
+        calc(
+            100vh
+            - var(--header-height)
+            - var(--toolbar-height)
+            - var(--view-toolbar-height)
+            - var(--footer-height)
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    overflow: auto;
+
+    padding: 58px 90px 80px;
+
+    background:
+        #e7eaf0;
+
+    scrollbar-width: thin;
+
+}
+
+
+/* =========================================================
+   18. RÉGUA
+========================================================= */
+
+.editor-ruler {
+
+    position: absolute;
+
+    z-index: 10;
+
+    color: var(--gray-500);
+
+    background: var(--white);
+
+    font-size: 0.65rem;
+
+    user-select: none;
+
+}
+
+
+.horizontal-ruler {
+
+    top: 18px;
+
+    left: 50%;
+
+    width: var(--page-width);
+
+    height: 26px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    padding: 0 18px 4px;
+
+    border-bottom:
+        1px solid var(--gray-300);
+
+    border-radius:
+        var(--radius-xs);
+
+}
+
+
+.vertical-ruler {
+
+    top: 58px;
+
+    left: calc(50% - (var(--page-width) / 2) - 42px);
+
+    width: 26px;
+
+    height: var(--page-min-height);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 12px 0;
+
+    border-right:
+        1px solid var(--gray-300);
+
+    border-radius:
+        var(--radius-xs);
+
+}
+
+
+/* =========================================================
+   19. ÁREA DAS PÁGINAS
+========================================================= */
+
+.document-pages {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+
+/* =========================================================
+   20. PÁGINA DO DOCUMENTO
+========================================================= */
+
+.document-page-editor {
+
+    position: relative;
+
+    width: var(--page-width);
+
+    min-height: var(--page-min-height);
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: var(--white);
+
+    box-shadow:
+        var(--shadow-page);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   21. CABEÇALHO DA PÁGINA
+========================================================= */
+
+.document-page-header {
+
+    flex-shrink: 0;
+
+    min-height: 75px;
+
+    padding:
+        30px
+        76px
+        12px;
+
+}
+
+
+.page-header-content {
+
+    min-height: 30px;
+
+    outline: none;
+
+    color: var(--gray-700);
+
+    font-size: 0.75rem;
+
+}
+
+
+/* =========================================================
+   22. ÁREA EDITÁVEL
+========================================================= */
+
+.page-content {
+
+    flex: 1;
+
+    min-height: 850px;
+
+    padding:
+        24px
+        76px
+        32px;
+
+    outline: none;
+
+    color: var(--gray-900);
+
+    background: var(--white);
+
+    font-family:
+        "Calibri",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 12pt;
+
+    line-height: 1.5;
+
+    overflow-wrap: break-word;
+
+    word-break: normal;
+
+}
+
+
+/* =========================================================
+   23. PLACEHOLDER DO EDITOR
+========================================================= */
+
+.page-content:empty::before,
+.page-header-content:empty::before,
+.page-footer-content:empty::before {
+
+    content: attr(data-placeholder);
+
+    color: var(--gray-400);
+
+    pointer-events: none;
+
+}
+
+
+.page-content:focus:empty::before {
+
+    color: var(--gray-300);
+
+}
+
+
+/* =========================================================
+   24. TIPOGRAFIA DO DOCUMENTO
+========================================================= */
+
+.page-content h1 {
+
+    margin:
+        0 0 18px;
+
+    color: var(--gray-900);
+
+    font-size: 26pt;
+
+    line-height: 1.2;
+
+}
+
+
+.page-content h2 {
+
+    margin:
+        22px 0 12px;
+
+    color: var(--gray-900);
+
+    font-size: 20pt;
+
+    line-height: 1.25;
+
+}
+
+
+.page-content h3 {
+
+    margin:
+        18px 0 10px;
+
+    color: var(--gray-800);
+
+    font-size: 15pt;
+
+    line-height: 1.3;
+
+}
+
+
+.page-content p {
+
+    margin-bottom: 10px;
+
+}
+
+
+.page-content blockquote {
+
+    margin:
+        18px 0;
+
+    padding:
+        12px
+        18px;
+
+    color: var(--gray-600);
+
+    background:
+        var(--gray-50);
+
+    border-left:
+        4px solid var(--axis-blue-600);
+
+}
+
+
+/* =========================================================
+   25. LINKS DO DOCUMENTO
+========================================================= */
+
+.page-content a {
+
+    color: var(--axis-blue-700);
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   26. LISTAS
+========================================================= */
+
+.page-content ul {
+
+    padding-left: 30px;
+
+    list-style: disc;
+
+}
+
+
+.page-content ol {
+
+    padding-left: 30px;
+
+    list-style: decimal;
+
+}
+
+
+.page-content li {
+
+    margin-bottom: 4px;
+
+}
+
+
+/* =========================================================
+   27. TABELAS
+========================================================= */
+
+.page-content table {
+
+    width: 100%;
+
+    margin:
+        18px 0;
+
+    border-collapse: collapse;
+
+}
+
+
+.page-content th,
+.page-content td {
+
+    padding: 8px 10px;
+
+    border:
+        1px solid var(--gray-300);
+
+    text-align: left;
+
+}
+
+
+.page-content th {
+
+    background:
+        var(--axis-blue-50);
+
+    color:
+        var(--axis-blue-900);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   28. IMAGENS INSERIDAS NO DOCUMENTO
+========================================================= */
+
+.page-content img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    margin:
+        14px 0;
+
+}
+
+
+/* =========================================================
+   29. RODAPÉ DA PÁGINA
+========================================================= */
+
+.document-page-footer {
+
+    flex-shrink: 0;
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    padding:
+        12px
+        76px
+        28px;
+
+}
+
+
+.page-footer-content {
+
+    flex: 1;
+
+    min-height: 24px;
+
+    outline: none;
+
+    color: var(--gray-500);
+
+    font-size: 0.72rem;
+
+}
+
+
+.page-number {
+
+    min-width: 25px;
+
+    color: var(--gray-500);
+
+    font-size: 0.72rem;
+
+    text-align: right;
+
+}
+
+
+/* =========================================================
+   30. PAINEL DE NAVEGAÇÃO
+========================================================= */
+
+.page-navigation-panel {
+
+    position: fixed;
+
+    z-index: 30;
+
+    top:
+        calc(
+            var(--header-height)
+            + var(--toolbar-height)
+            + var(--view-toolbar-height)
+        );
+
+    left: 0;
+
+    bottom: var(--footer-height);
+
+    width: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 16px 12px;
+
+    background: var(--white);
+
+    border-right:
+        1px solid var(--border-color);
+
+    box-shadow:
+        3px 0 12px rgba(30, 45, 65, 0.05);
+
+    overflow-y: auto;
+
+}
+
+
+/* =========================================================
+   31. CABEÇALHO DO PAINEL
+========================================================= */
+
+.page-navigation-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+
+    padding:
+        0 4px;
+
+}
+
+
+.page-navigation-header h2 {
+
+    color: var(--gray-800);
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+}
+
+
+.page-navigation-header span {
+
+    min-width: 22px;
+
+    padding: 3px 6px;
+
+    color: var(--axis-blue-800);
+
+    background:
+        var(--axis-blue-50);
+
+    border-radius: 20px;
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   32. MINIATURAS
+========================================================= */
+
+.page-thumbnails {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.page-thumbnail {
+
+    position: relative;
+
+    width: 130px;
+
+    height: 170px;
+
+    padding: 0;
+
+    background: var(--white);
+
+    border:
+        2px solid transparent;
+
+    border-radius: var(--radius-sm);
+
+    box-shadow:
+        0 2px 8px rgba(30, 45, 65, 0.12);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+
+}
+
+
+.page-thumbnail:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 14px rgba(30, 45, 65, 0.16);
+
+}
+
+
+.page-thumbnail.active {
+
+    border-color:
+        var(--axis-blue-600);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(22, 119, 210, 0.10);
+
+}
+
+
+.page-thumbnail-number {
+
+    position: absolute;
+
+    top: 6px;
+
+    left: 7px;
+
+    z-index: 2;
+
+    min-width: 19px;
+
+    padding: 2px 4px;
+
+    color: var(--gray-600);
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border-radius: 3px;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+}
+
+
+.page-thumbnail-preview {
+
+    position: absolute;
+
+    inset:
+        25px
+        12px
+        12px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            var(--gray-200) 0,
+            var(--gray-200) 1px,
+            transparent 1px,
+            transparent 9px
+        );
+
+    opacity: 0.65;
+
+}
+
+
+/* =========================================================
+   33. BOTÃO DE NOVA PÁGINA
+========================================================= */
+
+.add-page-button {
+
+    width: 100%;
+
+    min-height: 36px;
+
+    margin-top: auto;
+
+    padding: 0 10px;
+
+    color: var(--axis-blue-800);
+
+    background:
+        var(--axis-blue-50);
+
+    border:
+        1px solid var(--border-blue);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 0.76rem;
+
+    font-weight: 650;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+
+}
+
+
+.add-page-button:hover {
+
+    background:
+        var(--axis-blue-100);
+
+    border-color:
+        rgba(11, 95, 196, 0.35);
+
+}
+
+
+.add-page-button:active {
+
+    transform:
+        translateY(1px);
+
+}
+
+
+/* =========================================================
+   34. RODAPÉ DO EDITOR
+========================================================= */
+
+.editor-footer {
+
+    position: relative;
+
+    z-index: 50;
+
+    height: var(--footer-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 16px;
+
+    color: var(--gray-600);
+
+    background: var(--white);
+
+    border-top:
+        1px solid var(--border-color);
+
+    box-shadow:
+        0 -1px 4px rgba(30, 45, 65, 0.04);
+
+    font-size: 0.7rem;
+
+}
+
+
+/* =========================================================
+   35. ÁREAS DO RODAPÉ
+========================================================= */
+
+.editor-footer-left,
+.editor-footer-center,
+.editor-footer-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.editor-footer-center {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+/* =========================================================
+   36. DIVISOR DO RODAPÉ
+========================================================= */
+
+.footer-divider {
+
+    width: 1px;
+
+    height: 14px;
+
+    background:
+        var(--gray-200);
+
+}
+
+
+/* =========================================================
+   37. STATUS DE SALVAMENTO
+========================================================= */
+
+#saveStatus {
+
+    color: var(--success);
+
+    font-weight: 600;
+
+}
+
+
+#saveStatus.unsaved {
+
+    color: var(--warning);
+
+}
+
+
+#saveStatus.error {
+
+    color: var(--danger);
+
+}
+
+
+/* =========================================================
+   38. CONTROLE DE ZOOM DO RODAPÉ
+========================================================= */
+
+.footer-view-button {
+
+    width: 24px;
+
+    height: 24px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gray-600);
+
+    background: transparent;
+
+    border-radius: var(--radius-xs);
+
+    font-weight: 700;
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast);
+
+}
+
+
+.footer-view-button:hover {
+
+    color: var(--axis-blue-800);
+
+    background:
+        var(--axis-blue-50);
+
+}
+
+
+#footerZoomValue {
+
+    min-width: 42px;
+
+    color: var(--gray-700);
+
+    font-weight: 600;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   39. SELEÇÃO DO TEXTO
+========================================================= */
+
+.page-content ::selection {
+
+    color: inherit;
+
+    background:
+        rgba(22, 119, 210, 0.22);
+
+}
+
+
+/* =========================================================
+   40. SCROLLBARS
+========================================================= */
+
+.editor-toolbar::-webkit-scrollbar,
+.editor-workspace::-webkit-scrollbar,
+.page-navigation-panel::-webkit-scrollbar {
+
+    width: 7px;
+
+    height: 7px;
+
+}
+
+
+.editor-toolbar::-webkit-scrollbar-track,
+.editor-workspace::-webkit-scrollbar-track,
+.page-navigation-panel::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.editor-toolbar::-webkit-scrollbar-thumb,
+.editor-workspace::-webkit-scrollbar-thumb,
+.page-navigation-panel::-webkit-scrollbar-thumb {
+
+    background:
+        var(--gray-300);
+
+    border-radius:
+        20px;
+
+}
+
+
+.editor-toolbar::-webkit-scrollbar-thumb:hover,
+.editor-workspace::-webkit-scrollbar-thumb:hover,
+.page-navigation-panel::-webkit-scrollbar-thumb:hover {
+
+    background:
+        var(--gray-400);
+
+}
+
+
+/* =========================================================
+   41. RESPONSIVIDADE — TELAS MÉDIAS
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .page-navigation-panel {
+
+        width: 160px;
+
+    }
+
+
+    .page-thumbnail {
+
+        width: 110px;
+
+        height: 145px;
+
+    }
+
+
+    .editor-workspace {
+
+        padding-left: 65px;
+
+        padding-right: 40px;
+
+    }
+
+
+    .vertical-ruler {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   42. RESPONSIVIDADE — TABLETS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .editor-header {
+
+        gap: 12px;
+
+        padding:
+            0 12px;
+
+    }
+
+
+    .document-status {
+
+        display: none;
+
+    }
+
+
+    .editor-header-button {
+
+        padding:
+            0 9px;
+
+    }
+
+
+    .page-navigation-panel {
+
+        display: none;
+
+    }
+
+
+    .editor-workspace {
+
+        padding:
+            45px 30px 70px;
+
+    }
+
+
+    .horizontal-ruler {
+
+        width:
+            min(
+                var(--page-width),
+                calc(100% - 60px)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   43. RESPONSIVIDADE — CELULARES
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+
+        overflow: auto;
+
+    }
+
+
+    .editor-header {
+
+        height: auto;
+
+        min-height: var(--header-height);
+
+        flex-wrap: wrap;
+
+        padding:
+            10px 12px;
+
+    }
+
+
+    .editor-brand {
+
+        order: 1;
+
+    }
+
+
+    .document-header-info {
+
+        order: 3;
+
+        flex-basis: 100%;
+
+    }
+
+
+    .editor-header-actions {
+
+        order: 2;
+
+        margin-left: auto;
+
+    }
+
+
+    .document-title {
+
+        width: 100%;
+
+    }
+
+
+    .editor-toolbar {
+
+        min-height: 48px;
+
+    }
+
+
+    .document-view-toolbar {
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+    }
+
+
+    .editor-workspace {
+
+        height: auto;
+
+        min-height:
+            calc(
+                100vh
+                - var(--header-height)
+                - var(--toolbar-height)
+                - var(--view-toolbar-height)
+                - var(--footer-height)
+            );
+
+        padding:
+            35px 12px 60px;
+
+    }
+
+
+    .horizontal-ruler {
+
+        display: none;
+
+    }
+
+
+    .document-page-editor {
+
+        width: 100%;
+
+        min-height: 900px;
+
+    }
+
+
+    .page-content {
+
+        padding:
+            24px 35px;
+
+    }
+
+
+    .document-page-header {
+
+        padding:
+            25px 35px 10px;
+
+    }
+
+
+    .document-page-footer {
+
+        padding:
+            10px 35px 25px;
+
+    }
+
+
+    .editor-footer {
+
+        height: auto;
+
+        min-height: var(--footer-height);
+
+        flex-wrap: wrap;
+
+        gap: 5px;
+
+        padding:
+            7px 10px;
+
+    }
+
+
+    .editor-footer-center {
+
+        position: static;
+
+        transform: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   44. REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   45. IMPRESSÃO
+========================================================= */
+
+@media print {
+
+    body {
+
+        background: var(--white);
+
+        overflow: visible;
+
+    }
+
+
+    .editor-header,
+    .editor-toolbar,
+    .document-view-toolbar,
+    .page-navigation-panel,
+    .editor-footer,
+    .editor-ruler {
+
+        display: none !important;
+
+    }
+
+
+    .editor-workspace {
+
+        height: auto;
+
+        display: block;
+
+        padding: 0;
+
+        overflow: visible;
+
+        background: var(--white);
+
+    }
+
+
+    .document-pages {
+
+        display: block;
+
+    }
+
+
+    .document-page-editor {
+
+        width: 210mm;
+
+        min-height: 297mm;
+
+        margin: 0;
+
+        box-shadow: none;
+
+        page-break-after: always;
+
+    }
+
+
+    .document-page-editor:last-child {
+
+        page-break-after: auto;
+
+    }
+
+}

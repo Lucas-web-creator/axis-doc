@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Permite adaptação da aplicação em diferentes telas -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Descrição da aplicação -->
+    <meta
+        name="description"
+        content="AXIS DOC — editor de documentos web."
+    >
+
+    <!-- Título -->
+    <title>AXIS DOC — Editor</title>
+
+    <!-- CSS da Edition -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         1. CABEÇALHO PRINCIPAL
+    ========================================================== -->
+
+    <header class="editor-header">
+
+        <!-- Identidade -->
+        <div class="editor-brand">
+
+            <a
+                href="../Menu/index.html"
+                class="editor-brand-link"
+                aria-label="Voltar para o AXIS DOC"
+            >
+
+                <span class="brand-name">
+                    AXIS
+                </span>
+
+                <span class="brand-product">
+                    DOC
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- Informações do documento -->
+        <div class="document-header-info">
+
+            <input
+                type="text"
+                class="document-title"
+                id="documentTitle"
+                value="Documento sem título"
+                aria-label="Nome do documento"
+                autocomplete="off"
+            >
+
+            <span
+                class="document-status"
+                id="documentStatus"
+            >
+                Não salvo
+            </span>
+
+        </div>
+
+
+        <!-- Ações principais -->
+        <div class="editor-header-actions">
+
+            <button
+                type="button"
+                class="editor-header-button"
+                id="saveDocumentButton"
+                title="Salvar documento"
+            >
+                Salvar
+            </button>
+
+            <button
+                type="button"
+                class="editor-header-button"
+                id="exportPdfButton"
+                title="Exportar documento para PDF"
+            >
+                Exportar PDF
+            </button>
+
+            <button
+                type="button"
+                class="editor-header-button"
+                id="printDocumentButton"
+                title="Imprimir documento"
+            >
+                Imprimir
+            </button>
+
+            <button
+                type="button"
+                class="editor-header-button"
+                id="backToMenuButton"
+                title="Voltar para o Menu"
+            >
+                Menu
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         2. BARRA PRINCIPAL DE FERRAMENTAS
+    ========================================================== -->
+
+    <nav
+        class="editor-toolbar"
+        aria-label="Ferramentas de edição"
+    >
+
+
+        <!-- =====================================================
+             HISTÓRICO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="undoButton"
+                title="Desfazer"
+            >
+                Desfazer
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="redoButton"
+                title="Refazer"
+            >
+                Refazer
+            </button>
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             CLIPBOARD
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="cutButton"
+                title="Recortar"
+            >
+                Recortar
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="copyButton"
+                title="Copiar"
+            >
+                Copiar
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="pasteButton"
+                title="Colar"
+            >
+                Colar
+            </button>
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             ESTILO DO TEXTO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <label
+                for="textStyle"
+                class="toolbar-label"
+            >
+                Estilo
+            </label>
+
+            <select
+                id="textStyle"
+                class="toolbar-select"
+                aria-label="Estilo do texto"
+            >
+
+                <option value="paragraph">
+                    Normal
+                </option>
+
+                <option value="title">
+                    Título
+                </option>
+
+                <option value="heading1">
+                    Título 1
+                </option>
+
+                <option value="heading2">
+                    Título 2
+                </option>
+
+                <option value="heading3">
+                    Título 3
+                </option>
+
+                <option value="quote">
+                    Citação
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =====================================================
+             FONTE
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <label
+                for="fontFamily"
+                class="toolbar-label"
+            >
+                Fonte
+            </label>
+
+            <select
+                id="fontFamily"
+                class="toolbar-select"
+                aria-label="Selecionar fonte"
+            >
+
+                <option value="Arial">
+                    Arial
+                </option>
+
+                <option value="Calibri">
+                    Calibri
+                </option>
+
+                <option value="Georgia">
+                    Georgia
+                </option>
+
+                <option value="Times New Roman">
+                    Times New Roman
+                </option>
+
+                <option value="Verdana">
+                    Verdana
+                </option>
+
+                <option value="Trebuchet MS">
+                    Trebuchet MS
+                </option>
+
+                <option value="Courier New">
+                    Courier New
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =====================================================
+             TAMANHO DA FONTE
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="decreaseFontButton"
+                title="Diminuir tamanho da fonte"
+            >
+                −
+            </button>
+
+            <select
+                id="fontSize"
+                class="toolbar-select font-size-select"
+                aria-label="Tamanho da fonte"
+            >
+
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+
+                <option
+                    value="12"
+                    selected
+                >
+                    12
+                </option>
+
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+                <option value="28">28</option>
+                <option value="32">32</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+                <option value="60">60</option>
+                <option value="72">72</option>
+
+            </select>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="increaseFontButton"
+                title="Aumentar tamanho da fonte"
+            >
+                +
+            </button>
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             FORMATAÇÃO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button toolbar-format-button"
+                id="boldButton"
+                title="Negrito"
+                aria-label="Negrito"
+            >
+                B
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button toolbar-format-button"
+                id="italicButton"
+                title="Itálico"
+                aria-label="Itálico"
+            >
+                I
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button toolbar-format-button"
+                id="underlineButton"
+                title="Sublinhado"
+                aria-label="Sublinhado"
+            >
+                U
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button toolbar-format-button"
+                id="strikeButton"
+                title="Tachado"
+                aria-label="Tachado"
+            >
+                S
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             CORES
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <label
+                for="textColor"
+                class="toolbar-label"
+            >
+                Texto
+            </label>
+
+            <input
+                type="color"
+                id="textColor"
+                class="toolbar-color"
+                value="#202124"
+                title="Cor do texto"
+            >
+
+            <label
+                for="highlightColor"
+                class="toolbar-label"
+            >
+                Marca-texto
+            </label>
+
+            <input
+                type="color"
+                id="highlightColor"
+                class="toolbar-color"
+                value="#fff59d"
+                title="Cor de destaque"
+            >
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             ALINHAMENTO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="alignLeftButton"
+                title="Alinhar à esquerda"
+            >
+                Esquerda
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="alignCenterButton"
+                title="Centralizar"
+            >
+                Centro
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="alignRightButton"
+                title="Alinhar à direita"
+            >
+                Direita
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="alignJustifyButton"
+                title="Justificar"
+            >
+                Justificar
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             ESPAÇAMENTO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <label
+                for="lineSpacing"
+                class="toolbar-label"
+            >
+                Espaçamento
+            </label>
+
+            <select
+                id="lineSpacing"
+                class="toolbar-select"
+                aria-label="Espaçamento entre linhas"
+            >
+
+                <option value="1">
+                    1,0
+                </option>
+
+                <option value="1.15">
+                    1,15
+                </option>
+
+                <option value="1.5">
+                    1,5
+                </option>
+
+                <option value="2">
+                    2,0
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =====================================================
+             RECUO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="decreaseIndentButton"
+                title="Diminuir recuo"
+            >
+                ← Recuo
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="increaseIndentButton"
+                title="Aumentar recuo"
+            >
+                Recuo →
+            </button>
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             LISTAS
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="unorderedListButton"
+                title="Lista com marcadores"
+            >
+                Lista
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="orderedListButton"
+                title="Lista numerada"
+            >
+                Numerada
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             LINKS
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="insertLinkButton"
+                title="Inserir link"
+            >
+                Link
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="removeLinkButton"
+                title="Remover link"
+            >
+                Remover link
+            </button>
+
+        </div>
+
+
+        <span
+            class="toolbar-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- =====================================================
+             INSERÇÃO
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="insertImageButton"
+                title="Inserir imagem"
+            >
+                Imagem
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="insertTableButton"
+                title="Inserir tabela"
+            >
+                Tabela
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="insertHorizontalRuleButton"
+                title="Inserir linha horizontal"
+            >
+                Linha
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             PÁGINAS
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="insertPageButton"
+                title="Adicionar nova página"
+            >
+                Nova página
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="pageBreakButton"
+                title="Inserir quebra de página"
+            >
+                Quebra de página
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             CABEÇALHO E RODAPÉ
+        ====================================================== -->
+
+        <div class="toolbar-group">
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="headerButton"
+                title="Inserir cabeçalho"
+            >
+                Cabeçalho
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="footerButton"
+                title="Inserir rodapé"
+            >
+                Rodapé
+            </button>
+
+            <button
+                type="button"
+                class="toolbar-button"
+                id="pageNumberButton"
+                title="Inserir número de página"
+            >
+                Nº página
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         3. BARRA DE CONTEXTO DO DOCUMENTO
+
+         Controles relacionados à visualização da página.
+    ========================================================== -->
+
+    <section class="document-view-toolbar">
+
+        <div class="view-toolbar-group">
+
+            <label
+                for="zoomControl"
+                class="view-toolbar-label"
+            >
+                Zoom
+            </label>
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="zoomOutButton"
+                title="Diminuir zoom"
+            >
+                −
+            </button>
+
+            <span
+                id="zoomValue"
+                class="zoom-value"
+            >
+                100%
+            </span>
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="zoomInButton"
+                title="Aumentar zoom"
+            >
+                +
+            </button>
+
+        </div>
+
+
+        <div class="view-toolbar-group">
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="singlePageViewButton"
+            >
+                Uma página
+            </button>
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="multiplePageViewButton"
+            >
+                Várias páginas
+            </button>
+
+        </div>
+
+
+        <div class="view-toolbar-group">
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="showRulerButton"
+            >
+                Régua
+            </button>
+
+            <button
+                type="button"
+                class="view-toolbar-button"
+                id="showGridButton"
+            >
+                Grade
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         4. ÁREA PRINCIPAL DO EDITOR
+    ========================================================== -->
+
+    <main class="editor-workspace">
+
+
+        <!-- =====================================================
+             RÉGUA HORIZONTAL
+        ====================================================== -->
+
+        <div
+            class="editor-ruler horizontal-ruler"
+            id="horizontalRuler"
+            aria-hidden="true"
+        >
+
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+
+        </div>
+
+
+        <!-- =====================================================
+             RÉGUA VERTICAL
+        ====================================================== -->
+
+        <div
+            class="editor-ruler vertical-ruler"
+            id="verticalRuler"
+            aria-hidden="true"
+        >
+
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+
+        </div>
+
+
+        <!-- =====================================================
+             ÁREA DE PÁGINAS
+        ====================================================== -->
+
+        <section
+            class="document-pages"
+            id="documentPages"
+            aria-label="Páginas do documento"
+        >
+
+
+            <!-- =================================================
+                 PÁGINA 1
+            ================================================== -->
+
+            <article
+                class="document-page-editor"
+                data-page-number="1"
+            >
+
+                <!-- Cabeçalho da página -->
+
+                <header
+                    class="document-page-header"
+                    id="documentHeader"
+                >
+
+                    <div
+                        class="page-header-content"
+                        contenteditable="true"
+                        data-placeholder="Cabeçalho"
+                    ></div>
+
+                </header>
+
+
+                <!-- Área editável -->
+
+                <div
+                    class="page-content"
+                    id="pageContent"
+                    contenteditable="true"
+                    spellcheck="true"
+                    role="textbox"
+                    aria-multiline="true"
+                    aria-label="Conteúdo do documento"
+                    data-placeholder="Comece a escrever..."
+                ></div>
+
+
+                <!-- Rodapé -->
+
+                <footer
+                    class="document-page-footer"
+                    id="documentFooter"
+                >
+
+                    <div
+                        class="page-footer-content"
+                        contenteditable="true"
+                        data-placeholder="Rodapé"
+                    ></div>
+
+                    <span
+                        class="page-number"
+                        data-page-number="1"
+                    >
+                        1
+                    </span>
+
+                </footer>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         5. PAINEL DE NAVEGAÇÃO DE PÁGINAS
+    ========================================================== -->
+
+    <aside
+        class="page-navigation-panel"
+        id="pageNavigationPanel"
+        aria-label="Navegação de páginas"
+    >
+
+        <div class="page-navigation-header">
+
+            <h2>
+                Páginas
+            </h2>
+
+            <span id="pageNavigationCount">
+                1
+            </span>
+
+        </div>
+
+
+        <div
+            class="page-thumbnails"
+            id="pageThumbnails"
+        >
+
+            <button
+                type="button"
+                class="page-thumbnail active"
+                data-page-number="1"
+                aria-label="Página 1"
+            >
+
+                <span class="page-thumbnail-number">
+                    1
+                </span>
+
+                <span class="page-thumbnail-preview">
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-page-button"
+            id="addPageButton"
+        >
+            + Nova página
+        </button>
+
+    </aside>
+
+
+    <!-- =========================================================
+         6. BARRA INFERIOR DO EDITOR
+    ========================================================== -->
+
+    <footer class="editor-footer">
+
+
+        <!-- Informações do documento -->
+
+        <div class="editor-footer-left">
+
+            <span id="pageCounter">
+                Página 1 de 1
+            </span>
+
+            <span
+                class="footer-divider"
+                aria-hidden="true"
+            ></span>
+
+            <span id="wordCounter">
+                0 palavras
+            </span>
+
+            <span
+                class="footer-divider"
+                aria-hidden="true"
+            ></span>
+
+            <span id="characterCounter">
+                0 caracteres
+            </span>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="editor-footer-center">
+
+            <span id="saveStatus">
+                Pronto
+            </span>
+
+        </div>
+
+
+        <!-- Informações de visualização -->
+
+        <div class="editor-footer-right">
+
+            <button
+                type="button"
+                class="footer-view-button"
+                id="footerZoomOutButton"
+                title="Diminuir zoom"
+            >
+                −
+            </button>
+
+            <span id="footerZoomValue">
+                100%
+            </span>
+
+            <button
+                type="button"
+                class="footer-view-button"
+                id="footerZoomInButton"
+                title="Aumentar zoom"
+            >
+                +
+            </button>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         7. JAVASCRIPT
+    ========================================================== -->
+
+    <script
+        src="script.js"
+    ></script>
+
+</body>
+
+</html>

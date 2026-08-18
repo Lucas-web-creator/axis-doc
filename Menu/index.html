@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Permite que a página se adapte corretamente a diferentes telas -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Descrição básica da aplicação -->
+    <meta
+        name="description"
+        content="AXIS DOC — aplicação web para criação e gerenciamento de documentos."
+    >
+
+    <!-- Título exibido na aba do navegador -->
+    <title>AXIS DOC</title>
+
+    <!-- Folha de estilos principal da página Menu -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         CABEÇALHO PRINCIPAL
+         Contém a identidade da aplicação e a navegação principal.
+    ========================================================== -->
+
+    <header class="app-header">
+
+
+        <!-- =====================================================
+             IDENTIDADE VISUAL
+        ====================================================== -->
+
+        <div class="brand">
+
+            <a
+                href="index.html"
+                class="brand-link"
+                aria-label="AXIS DOC — Início"
+            >
+
+                <span class="brand-name">
+                    AXIS
+                </span>
+
+                <span class="brand-product">
+                    DOC
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- =====================================================
+             NAVEGAÇÃO PRINCIPAL
+        ====================================================== -->
+
+        <nav
+            class="main-navigation"
+            aria-label="Navegação principal"
+        >
+
+            <!-- Página inicial -->
+
+            <a
+                href="index.html"
+                class="nav-link active"
+                aria-current="page"
+            >
+                Início
+            </a>
+
+
+            <!-- Página de modelos -->
+
+            <a
+                href="../Models/index.html"
+                class="nav-link"
+            >
+                Modelos
+            </a>
+
+        </nav>
+
+
+        <!-- =====================================================
+             AÇÕES DO CABEÇALHO
+        ====================================================== -->
+
+        <div class="header-actions">
+
+
+            <!-- Configurações -->
+
+            <button
+                type="button"
+                class="header-action"
+                id="settingsButton"
+                aria-label="Abrir configurações"
+            >
+                Configurações
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- =========================================================
+         CONTEÚDO PRINCIPAL
+    ========================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================================
+             SEÇÃO DE BOAS-VINDAS
+        ====================================================== -->
+
+        <section class="welcome-section">
+
+
+            <!-- =================================================
+                 CABEÇALHO DA ÁREA DE CRIAÇÃO
+
+                 Contém o título, descrição e logo do AXIS DOC.
+            ================================================== -->
+
+            <div class="welcome-content">
+
+
+                <!-- =============================================
+                     CONTEÚDO TEXTUAL
+                ============================================== -->
+
+                <div class="welcome-text">
+
+
+                    <!-- Identificação da aplicação -->
+
+                    <p class="welcome-label">
+                        AXIS DOC
+                    </p>
+
+
+                    <!-- Título principal -->
+
+                    <h1 class="welcome-title">
+                        O que você deseja criar?
+                    </h1>
+
+
+                    <!-- Descrição -->
+
+                    <p class="welcome-description">
+                        Crie um novo documento ou escolha um modelo
+                        para começar.
+                    </p>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     LOGO DO AXIS DOC
+
+                     A logo possui um container externo arredondado
+                     e uma imagem interna também arredondada.
+
+                     A imagem poderá ser substituída posteriormente
+                     pelo arquivo definitivo da identidade visual.
+                ============================================== -->
+
+                <div
+                    class="axis-logo"
+                    aria-label="Logo AXIS DOC"
+                >
+
+                    <div class="axis-logo-image">
+
+                        <img
+                            src="logooficial.jpg"
+                            alt="Logo do AXIS DOC"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 AÇÕES PRINCIPAIS
+            ================================================== -->
+
+            <div class="creation-actions">
+
+
+                <!-- =============================================
+                     NOVO DOCUMENTO
+                ============================================== -->
+
+                <a
+                    href="../Edition/index.html"
+                    class="creation-card"
+                    id="newDocumentButton"
+                >
+
+                    <span
+                        class="creation-card-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
+
+
+                    <span class="creation-card-content">
+
+                        <strong>
+                            Novo documento
+                        </strong>
+
+                        <small>
+                            Começar com uma página em branco
+                        </small>
+
+                    </span>
+
+
+                </a>
+
+
+                <!-- =============================================
+                     MODELOS
+                ============================================== -->
+
+                <a
+                    href="../Models/index.html"
+                    class="creation-card"
+                    id="modelsButton"
+                >
+
+                    <span
+                        class="creation-card-icon"
+                        aria-hidden="true"
+                    >
+                        □
+                    </span>
+
+
+                    <span class="creation-card-content">
+
+                        <strong>
+                            Modelos
+                        </strong>
+
+                        <small>
+                            Começar a partir de um modelo
+                        </small>
+
+                    </span>
+
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================================
+             SEÇÃO DE DOCUMENTOS
+        ========================================================== -->
+
+        <section class="documents-section">
+
+
+            <!-- =====================================================
+                 CABEÇALHO DA SEÇÃO
+            ====================================================== -->
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <p class="section-label">
+                        Seus arquivos
+                    </p>
+
+                    <h2 class="section-title">
+                        Documentos recentes
+                    </h2>
+
+                </div>
+
+
+                <!-- Visualizar todos -->
+
+                <button
+                    type="button"
+                    class="view-all-button"
+                    id="viewAllDocumentsButton"
+                >
+                    Ver todos
+                </button>
+
+
+            </div>
+
+
+            <!-- =====================================================
+                 GRADE DE DOCUMENTOS
+
+                 O JavaScript poderá preencher esta área
+                 dinamicamente com os documentos salvos.
+            ====================================================== -->
+
+            <div
+                class="documents-grid"
+                id="documentsGrid"
+                aria-live="polite"
+            >
+
+
+                <!-- =============================================
+                     ESTADO VAZIO
+
+                     Exibido quando nenhum documento foi salvo.
+                ============================================== -->
+
+                <div
+                    class="empty-state"
+                    id="emptyDocumentsState"
+                >
+
+
+                    <div
+                        class="empty-state-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </div>
+
+
+                    <h3>
+                        Nenhum documento ainda
+                    </h3>
+
+
+                    <p>
+                        Seus documentos salvos aparecerão aqui.
+                    </p>
+
+
+                    <a
+                        href="../Edition/index.html"
+                        class="empty-state-action"
+                    >
+                        Criar documento
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         RODAPÉ
+    ========================================================== -->
+
+    <footer class="app-footer">
+
+
+        <p>
+            AXIS DOC
+        </p>
+
+
+        <p>
+            Editor de documentos web
+        </p>
+
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+
+         O script é carregado no final do body para garantir
+         que os elementos HTML já estejam disponíveis.
+    ========================================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1937 @@
+/* =========================================================
+   AXIS DOC — MODELS
+   Style Sheet
+   ---------------------------------------------------------
+   Biblioteca de modelos do AXIS DOC.
+
+   Identidade:
+   - Azul
+   - Branco
+   - Cinza azulado para elementos secundários
+
+   Conceito visual:
+   Interface limpa e organizada para seleção de modelos
+   de documentos.
+========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS GLOBAIS
+========================================================= */
+
+:root {
+
+    /* -----------------------------------------------------
+       IDENTIDADE AXIS DOC
+    ----------------------------------------------------- */
+
+    --blue: #185abd;
+    --blue-dark: #0f4aa3;
+    --blue-deep: #0b3f91;
+
+    --blue-light: #eaf2ff;
+    --blue-soft: #f4f8ff;
+
+    --blue-hover: #e1edff;
+    --blue-border: #c8daf5;
+
+
+    /* -----------------------------------------------------
+       CORES PRINCIPAIS
+    ----------------------------------------------------- */
+
+    --white: #ffffff;
+
+    --background: #f5f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8faff;
+
+
+    /* -----------------------------------------------------
+       TEXTOS
+    ----------------------------------------------------- */
+
+    --text: #202124;
+    --text-secondary: #5f6368;
+    --text-muted: #7b8490;
+
+
+    /* -----------------------------------------------------
+       BORDAS
+    ----------------------------------------------------- */
+
+    --border: #dfe5ee;
+    --border-light: #edf1f6;
+
+
+    /* -----------------------------------------------------
+       SOMBRAS
+    ----------------------------------------------------- */
+
+    --shadow-xs:
+        0 1px 3px rgba(20, 40, 70, 0.06);
+
+    --shadow-sm:
+        0 4px 12px rgba(20, 60, 110, 0.08);
+
+    --shadow-md:
+        0 10px 28px rgba(20, 60, 110, 0.12);
+
+    --shadow-lg:
+        0 20px 45px rgba(20, 60, 110, 0.16);
+
+
+    /* -----------------------------------------------------
+       BORDAS ARREDONDADAS
+    ----------------------------------------------------- */
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+
+
+    /* -----------------------------------------------------
+       TRANSIÇÕES
+    ----------------------------------------------------- */
+
+    --transition-fast:
+        160ms ease;
+
+    --transition-normal:
+        240ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    --transition-smooth:
+        380ms cubic-bezier(0.16, 1, 0.3, 1);
+
+
+    /* -----------------------------------------------------
+       ESTRUTURA
+    ----------------------------------------------------- */
+
+    --header-height: 64px;
+
+    --content-width: 1180px;
+
+}
+
+
+/* =========================================================
+   2. RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0,
+            #f7f9fc 360px,
+            var(--background) 100%
+        );
+
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+/* =========================================================
+   3. ELEMENTOS GLOBAIS
+========================================================= */
+
+button,
+a {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    border: 0;
+
+    background: none;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+button,
+a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   4. CABEÇALHO
+========================================================= */
+
+.app-header {
+
+    width: 100%;
+
+    min-height:
+        var(--header-height);
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0 32px;
+
+    background:
+        var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    box-shadow:
+        0 1px 8px
+        rgba(20, 50, 90, 0.04);
+
+    transition:
+        box-shadow
+        var(--transition-normal);
+
+}
+
+
+.app-header:hover {
+
+    box-shadow:
+        0 3px 14px
+        rgba(20, 50, 90, 0.07);
+
+}
+
+
+/* =========================================================
+   5. IDENTIDADE AXIS DOC
+========================================================= */
+
+.brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    margin-right:
+        38px;
+
+}
+
+
+.brand-link {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    font-size:
+        21px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        -0.8px;
+
+}
+
+
+.brand-name {
+
+    color:
+        var(--blue);
+
+}
+
+
+.brand-product {
+
+    color:
+        var(--text);
+
+}
+
+
+/* =========================================================
+   6. NAVEGAÇÃO
+========================================================= */
+
+.main-navigation {
+
+    height:
+        var(--header-height);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        2px;
+
+}
+
+
+.nav-link {
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    padding:
+        0 17px;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        14px;
+
+    font-weight:
+        500;
+
+    position:
+        relative;
+
+    isolation:
+        isolate;
+
+    transition:
+        color
+        var(--transition-fast),
+
+        background-color
+        var(--transition-fast);
+
+}
+
+
+.nav-link::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        8px 3px;
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--blue-light);
+
+    opacity:
+        0;
+
+    transform:
+        scale(0.94);
+
+    z-index:
+        -1;
+
+    transition:
+        opacity
+        var(--transition-normal),
+
+        transform
+        var(--transition-normal);
+
+}
+
+
+.nav-link:hover {
+
+    color:
+        var(--blue);
+
+}
+
+
+.nav-link:hover::before {
+
+    opacity:
+        1;
+
+    transform:
+        scale(1);
+
+}
+
+
+/* ---------------------------------------------------------
+   NAVEGAÇÃO ATIVA
+--------------------------------------------------------- */
+
+.nav-link.active {
+
+    color:
+        var(--blue);
+
+    font-weight:
+        600;
+
+}
+
+
+.nav-link.active::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        17px;
+
+    right:
+        17px;
+
+    bottom:
+        0;
+
+    height:
+        3px;
+
+    border-radius:
+        3px 3px 0 0;
+
+    background:
+        var(--blue);
+
+}
+
+
+/* =========================================================
+   7. AÇÕES DO CABEÇALHO
+========================================================= */
+
+.header-actions {
+
+    margin-left:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+}
+
+
+.header-action {
+
+    padding:
+        8px 14px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-sm);
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    transition:
+        color
+        var(--transition-fast),
+
+        background-color
+        var(--transition-fast),
+
+        border-color
+        var(--transition-fast),
+
+        transform
+        var(--transition-fast),
+
+        box-shadow
+        var(--transition-fast);
+
+}
+
+
+.header-action:hover {
+
+    color:
+        var(--blue);
+
+    background:
+        var(--blue-soft);
+
+    border-color:
+        var(--blue-border);
+
+    box-shadow:
+        var(--shadow-xs);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.header-action:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   8. CONTEÚDO PRINCIPAL
+========================================================= */
+
+.main-content {
+
+    width:
+        min(
+            calc(100% - 64px),
+            var(--content-width)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        64px 0 90px;
+
+    flex:
+        1;
+
+}
+
+
+/* =========================================================
+   9. INTRODUÇÃO DOS MODELOS
+========================================================= */
+
+.models-intro {
+
+    margin-bottom:
+        52px;
+
+}
+
+
+.models-intro-content {
+
+    max-width:
+        720px;
+
+}
+
+
+.models-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        9px;
+
+    color:
+        var(--blue);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.5px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.models-intro h1 {
+
+    margin-bottom:
+        14px;
+
+    color:
+        var(--text);
+
+    font-size:
+        clamp(
+            36px,
+            4.5vw,
+            52px
+        );
+
+    font-weight:
+        650;
+
+    line-height:
+        1.08;
+
+    letter-spacing:
+        -2px;
+
+}
+
+
+.models-intro p {
+
+    max-width:
+        620px;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   10. SEÇÃO DE MODELOS
+========================================================= */
+
+.models-section {
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   11. CABEÇALHO DA SEÇÃO
+========================================================= */
+
+.section-header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        26px;
+
+}
+
+
+.section-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.section-title {
+
+    color:
+        var(--text);
+
+    font-size:
+        25px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        -0.5px;
+
+}
+
+
+/* =========================================================
+   12. GRADE DE MODELOS
+========================================================= */
+
+.models-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        22px;
+
+}
+
+
+/* =========================================================
+   13. CARD DE MODELO
+========================================================= */
+
+.model-card {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-xs);
+
+    transition:
+        transform
+        var(--transition-smooth),
+
+        border-color
+        var(--transition-smooth),
+
+        box-shadow
+        var(--transition-smooth);
+
+}
+
+
+/* ---------------------------------------------------------
+   DETALHE LATERAL
+--------------------------------------------------------- */
+
+.model-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        4px;
+
+    height:
+        100%;
+
+    background:
+        var(--blue);
+
+    transform:
+        scaleY(0);
+
+    transform-origin:
+        bottom;
+
+    z-index:
+        5;
+
+    transition:
+        transform
+        var(--transition-normal);
+
+}
+
+
+.model-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        var(--blue-border);
+
+    box-shadow:
+        var(--shadow-md);
+
+}
+
+
+.model-card:hover::before {
+
+    transform:
+        scaleY(1);
+
+}
+
+
+/* ---------------------------------------------------------
+   BRILHO
+--------------------------------------------------------- */
+
+.model-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    top:
+        -115px;
+
+    right:
+        -80px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blue-light);
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity
+        var(--transition-smooth),
+
+        transform
+        var(--transition-smooth);
+
+}
+
+
+.model-card:hover::after {
+
+    opacity:
+        0.65;
+
+    transform:
+        scale(1.15);
+
+}
+
+
+/* =========================================================
+   14. ÁREA DE PREVIEW
+========================================================= */
+
+.model-preview {
+
+    min-height:
+        255px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        28px;
+
+    position:
+        relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #edf3fa,
+            #f5f8fc
+        );
+
+    border-bottom:
+        1px solid var(--border-light);
+
+    overflow:
+        hidden;
+
+}
+
+
+/* ---------------------------------------------------------
+   EFEITO DE FUNDO
+--------------------------------------------------------- */
+
+.model-preview::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        230px;
+
+    height:
+        230px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blue-light);
+
+    opacity:
+        0.45;
+
+    top:
+        -150px;
+
+    left:
+        -100px;
+
+}
+
+
+/* =========================================================
+   15. PÁGINA DO MODELO
+========================================================= */
+
+.model-page {
+
+    width:
+        150px;
+
+    height:
+        198px;
+
+    flex-shrink:
+        0;
+
+    padding:
+        18px 17px;
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid #e2e7ee;
+
+    box-shadow:
+        0 8px 20px
+        rgba(20, 50, 90, 0.12),
+
+        0 2px 5px
+        rgba(20, 50, 90, 0.06);
+
+    transform:
+        perspective(700px)
+        rotateY(-4deg)
+        rotateX(2deg);
+
+    transition:
+        transform
+        var(--transition-smooth),
+
+        box-shadow
+        var(--transition-smooth);
+
+}
+
+
+.model-card:hover .model-page {
+
+    transform:
+        perspective(700px)
+        rotateY(-1deg)
+        rotateX(1deg)
+        translateY(-5px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(20, 50, 90, 0.15),
+
+        0 3px 8px
+        rgba(20, 50, 90, 0.07);
+
+}
+
+
+/* =========================================================
+   16. ELEMENTOS VISUAIS DA PÁGINA
+========================================================= */
+
+.model-page-title {
+
+    width:
+        65%;
+
+    height:
+        9px;
+
+    margin-bottom:
+        18px;
+
+    border-radius:
+        2px;
+
+    background:
+        var(--blue);
+
+    opacity:
+        0.9;
+
+}
+
+
+.model-page-heading {
+
+    width:
+        72%;
+
+    height:
+        10px;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        2px;
+
+    background:
+        var(--blue);
+
+    opacity:
+        0.9;
+
+}
+
+
+.model-page-line {
+
+    width:
+        100%;
+
+    height:
+        5px;
+
+    margin-bottom:
+        9px;
+
+    border-radius:
+        2px;
+
+    background:
+        #d9e0e9;
+
+}
+
+
+.model-page-line.short {
+
+    width:
+        68%;
+
+}
+
+
+.model-page-section {
+
+    width:
+        42%;
+
+    height:
+        7px;
+
+    margin-top:
+        17px;
+
+    margin-bottom:
+        11px;
+
+    border-radius:
+        2px;
+
+    background:
+        #aeb9c8;
+
+}
+
+
+.model-page-space {
+
+    height:
+        28px;
+
+}
+
+
+/* =========================================================
+   17. INFORMAÇÕES DO MODELO
+========================================================= */
+
+.model-info {
+
+    min-height:
+        132px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+
+    gap:
+        18px;
+
+    padding:
+        18px 20px 20px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    background:
+        var(--white);
+
+}
+
+
+.model-text {
+
+    min-width:
+        0;
+
+}
+
+
+.model-text h3 {
+
+    margin-bottom:
+        5px;
+
+    overflow:
+        hidden;
+
+    color:
+        var(--text);
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.35;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+
+}
+
+
+.model-text p {
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   18. BOTÃO DO MODELO
+========================================================= */
+
+.model-action {
+
+    width:
+        100%;
+
+    padding:
+        9px 14px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid var(--blue-border);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--blue-soft);
+
+    color:
+        var(--blue);
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    transition:
+        color
+        var(--transition-fast),
+
+        background-color
+        var(--transition-fast),
+
+        border-color
+        var(--transition-fast),
+
+        transform
+        var(--transition-fast),
+
+        box-shadow
+        var(--transition-fast);
+
+}
+
+
+.model-action:hover {
+
+    background:
+        var(--blue);
+
+    border-color:
+        var(--blue);
+
+    color:
+        var(--white);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 14px
+        rgba(24, 90, 189, 0.18);
+
+}
+
+
+.model-action:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   19. ESTADO DE SELEÇÃO
+========================================================= */
+
+.model-card.selected {
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(24, 90, 189, 0.10),
+
+        var(--shadow-md);
+
+}
+
+
+.model-card.selected::before {
+
+    transform:
+        scaleY(1);
+
+}
+
+
+.model-card.selected .model-action {
+
+    background:
+        var(--blue);
+
+    border-color:
+        var(--blue);
+
+    color:
+        var(--white);
+
+}
+
+
+/* =========================================================
+   20. ESTADO DE FOCO
+========================================================= */
+
+.model-card:focus-within {
+
+    border-color:
+        var(--blue-border);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(24, 90, 189, 0.10),
+
+        var(--shadow-sm);
+
+}
+
+
+/* =========================================================
+   21. RODAPÉ
+========================================================= */
+
+.app-footer {
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        24px;
+
+    background:
+        var(--white);
+
+    border-top:
+        1px solid var(--border-light);
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   22. ACESSIBILIDADE
+========================================================= */
+
+:focus-visible {
+
+    outline:
+        3px solid
+        rgba(24, 90, 189, 0.28);
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDADE — DESKTOP MENOR
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .models-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   24. RESPONSIVIDADE — TABLETS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .app-header {
+
+        padding:
+            0 22px;
+
+    }
+
+
+    .brand {
+
+        margin-right:
+            24px;
+
+    }
+
+
+    .main-content {
+
+        width:
+            min(
+                calc(100% - 40px),
+                var(--content-width)
+            );
+
+        padding-top:
+            52px;
+
+    }
+
+
+    .model-preview {
+
+        min-height:
+            245px;
+
+    }
+
+}
+
+
+/* =========================================================
+   25. RESPONSIVIDADE — TABLETS MENORES
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .app-header {
+
+        min-height:
+            auto;
+
+        flex-wrap:
+            wrap;
+
+        padding:
+            12px 18px;
+
+        gap:
+            6px;
+
+    }
+
+
+    .brand {
+
+        margin-right:
+            auto;
+
+    }
+
+
+    .main-navigation {
+
+        order:
+            3;
+
+        width:
+            100%;
+
+        height:
+            42px;
+
+    }
+
+
+    .nav-link {
+
+        height:
+            42px;
+
+        padding:
+            0 13px;
+
+    }
+
+
+    .header-actions {
+
+        margin-left:
+            0;
+
+    }
+
+
+    .main-content {
+
+        width:
+            min(
+                calc(100% - 28px),
+                var(--content-width)
+            );
+
+        padding-top:
+            40px;
+
+    }
+
+
+    .models-intro {
+
+        margin-bottom:
+            42px;
+
+    }
+
+
+    .models-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            16px;
+
+    }
+
+
+    .model-preview {
+
+        min-height:
+            225px;
+
+        padding:
+            22px;
+
+    }
+
+
+    .model-page {
+
+        width:
+            135px;
+
+        height:
+            180px;
+
+        padding:
+            15px;
+
+    }
+
+
+    .model-info {
+
+        padding:
+            16px;
+
+    }
+
+}
+
+
+/* =========================================================
+   26. RESPONSIVIDADE — SMARTPHONES
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .main-content {
+
+        padding-bottom:
+            60px;
+
+    }
+
+
+    .models-intro {
+
+        margin-bottom:
+            36px;
+
+    }
+
+
+    .models-intro h1 {
+
+        font-size:
+            34px;
+
+        letter-spacing:
+            -1.5px;
+
+    }
+
+
+    .models-intro p {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .section-header {
+
+        align-items:
+            flex-start;
+
+        gap:
+            15px;
+
+    }
+
+
+    .section-title {
+
+        font-size:
+            22px;
+
+    }
+
+
+    .models-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+
+    }
+
+
+    .model-preview {
+
+        min-height:
+            245px;
+
+    }
+
+
+    .model-page {
+
+        width:
+            150px;
+
+        height:
+            198px;
+
+    }
+
+
+    .model-info {
+
+        min-height:
+            140px;
+
+    }
+
+
+    .app-footer {
+
+        flex-direction:
+            column;
+
+        gap:
+            4px;
+
+    }
+
+}
+
+
+/* =========================================================
+   27. RESPONSIVIDADE — SMARTPHONES PEQUENOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .app-header {
+
+        padding-inline:
+            12px;
+
+    }
+
+
+    .brand-link {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .nav-link {
+
+        padding-inline:
+            9px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .header-action {
+
+        padding:
+            7px 11px;
+
+        font-size:
+            12px;
+
+    }
+
+
+    .models-intro h1 {
+
+        font-size:
+            30px;
+
+    }
+
+
+    .model-preview {
+
+        min-height:
+            225px;
+
+        padding:
+            18px;
+
+    }
+
+
+    .model-page {
+
+        width:
+            140px;
+
+        height:
+            185px;
+
+    }
+
+
+    .model-info {
+
+        padding:
+            15px;
+
+    }
+
+
+    .model-text h3 {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .model-text p {
+
+        font-size:
+            11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   28. REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        transition-duration:
+            0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+    }
+
+}
